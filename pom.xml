@@ -8,6 +8,12 @@
 	<name>Quartz Spring Maven Template</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<tomcat-server>http://192.168.1.182:8080/manager/text</tomcat-server>
+		<tomcat-user>tomcat-user</tomcat-user>
+		<app-context>/quartz-jobs</app-context>
+	</properties>
+
 	<dependencies>
 
 		<dependency>
@@ -39,7 +45,7 @@
 			<version>2.1</version>
 		</dependency>
 
-		<!-- solve method not found error in tomcat --> 
+		<!-- solve method not found error in tomcat -->
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>el-impl</artifactId>
@@ -51,7 +57,7 @@
 			<artifactId>el-ri</artifactId>
 			<version>1.0</version>
 		</dependency>
-  
+
 		<!-- Quartz scheduler framework -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
@@ -80,6 +86,32 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<dependency>
+						<groupId>javax.el</groupId>
+						<artifactId>el-api</artifactId>
+						<version>2.2</version>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.web</groupId>
+						<artifactId>el-impl</artifactId>
+						<version>2.2</version>
+					</dependency>
+					<!-- deployment info -->
+					<url>${tomcat-server}</url>
+					<!-- <server>${tomcat-user}</server>a -->
+					<username>admin</username>
+					<password>tomcat-124</password>
+
+					<path>${app-context}</path>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
