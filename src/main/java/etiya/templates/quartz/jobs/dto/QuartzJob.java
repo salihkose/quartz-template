@@ -1,8 +1,9 @@
 package etiya.templates.quartz.jobs.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class QuartzJob {
+public class QuartzJob implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	String jobName;
