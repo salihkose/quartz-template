@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data
+	xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+	version="1.8">
+
+	<schedule>
+		<job>
+			<name>JobA</name>
+			<group>GroupDummy</group>
+			<description>This is Job A</description>
+			<job-class>etiya.templates.quartz.jobs.JobA</job-class>
+		</job>
+
+		<trigger>
+			<cron>
+				<name>dummyTriggerNameA</name>
+				<job-name>JobA</job-name>
+				<job-group>GroupDummy</job-group>
+				<!-- It will run every 30 seconds -->
+				<cron-expression>0/30 * * * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</schedule>
+	
+	<schedule>
+		<job>
+			<name>JobB</name>
+			<group>GroupDummy</group>
+			<description>This is Job B</description>
+			<job-class>etiya.templates.quartz.jobs.JobB</job-class>
+		</job>
+
+		<trigger>
+			<cron>
+				<name>dummyTriggerNameB</name>
+				<job-name>JobB</job-name>
+				<job-group>GroupDummy</job-group>
+				<!-- It will run every 30 seconds -->
+				<cron-expression>0/30 * * * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</schedule>
+</job-scheduling-data>
